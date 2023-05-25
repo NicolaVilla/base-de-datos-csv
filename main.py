@@ -58,11 +58,12 @@ class BaseDeDatos():
         try:
             id = int(input("Ingrese la id del usuario que desea eliminar: "))
             datos = self.extraer_datos()
-            for i in range(1,len(datos)+1):
+            for i in range(1,len(datos)):
                 if(int(datos[i][0]) == id):
                     datos.pop(i)
+                    for j in range(i,len(datos)):
+                        datos[j][0]=j
                     self.cargar_datos(datos)
-                    self.mostar_usuarios()
                     return
             print("La id ingresada no coincide con ninguna en la BDD.")
             return
