@@ -1,7 +1,7 @@
 import csv
 class BaseDeDatos():
     def __init__(self,file_name):
-        self.path = "./archivos/" + file_name
+        self.path = "./archivos/" + file_name +".csv"
     #metodo para pedir los datos 
     def ingresar_datos(self):
         datos = []
@@ -14,14 +14,21 @@ class BaseDeDatos():
                 datos.append(dato)
         return datos
 
-
-
-    #def crear_usuario(self):
-
+    #funcion para agregar un nueva linea a la base de datos, utiliza el metodo ingresar_datos
+    def crear_usuario(self):   
+        datos = self.ingresar_datos()
+        with open(self.path,"a") as file:
+            writer = csv.writer(file)
+            file.write("\n")
+            writer.writerow(datos)
+    
     #def actualizar_usuario(self):
 
     #def borrar_usuario(self):
         
     #def borrar_usuario(self):
 
+sapo = BaseDeDatos("prueba")
+sapo.crear_usuario()
 
+#id, Apellido, Nombre, Edad, Correo
