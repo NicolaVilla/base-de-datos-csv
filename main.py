@@ -48,11 +48,14 @@ class BaseDeDatos():
             self.cargar_datos(datos)
         except ValueError:
             print("La id ingresada debe ser un numero!")
-    #def borrar_usuario(self):
-        
+    #metodo para mostar la base de datos
+    def mostar_usuarios(self):
+        with open(self.path, "r") as file:
+            reader = csv.reader(file)
+            for row in reader:
+                print(row)
     #def borrar_usuario(self):
 
-sapo = BaseDeDatos("prueba")
-sapo.actualizar_usuario()
+
 
 #id, Apellido, Nombre, Edad, Correo
