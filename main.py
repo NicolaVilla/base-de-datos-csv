@@ -21,21 +21,29 @@ class BaseDeDatos():
             writer = csv.writer(file)
             file.write("\n")
             writer.writerow(datos)
-
+    
+    #Metodo que devuelve una lista con todos los datos de la base
     def extraer_datos(self):
         datos = []
         with open(self.path,"r") as file:
             datos = list(csv.reader(file, skipinitialspace=True))
         return datos
-
-    #def actualizar_usuario(self):
-       
+    
+    #metodo que permite actualizar la base de datos
+    def actualizar_usuario(self):
+        id = int(input("Ingrese la id del usuario que desea actualizar: "))
+        datos = self.extraer_datos()
+        for i in range(1,len(datos)):
+            if(int(datos[i][0]) == id):
+                datos[i] = self.ingresar_datos()
+                datos[i][0] = id
+        self.cargar_datos(datos)
 
     #def borrar_usuario(self):
         
     #def borrar_usuario(self):
 
 sapo = BaseDeDatos("prueba")
-print(sapo.extraer_datos())
+sapo.actualizar_usuario()
 
 #id, Apellido, Nombre, Edad, Correo
