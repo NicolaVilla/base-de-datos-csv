@@ -29,6 +29,10 @@ class BaseDeDatos():
             datos = list(csv.reader(file, skipinitialspace=True))
         return datos
     
+    def cargar_datos(self,datos):
+        with open(self.path,"w") as file:
+            writer = csv.writer(file)
+            writer.writerows(datos)
     #metodo que permite actualizar la base de datos
     def actualizar_usuario(self):
         id = int(input("Ingrese la id del usuario que desea actualizar: "))
