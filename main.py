@@ -41,10 +41,11 @@ class BaseDeDatos():
                 if(int(datos[i][0]) == id):
                     datos[i] = self.ingresar_datos()
                     datos[i][0] = id
-                else:
-                    print("La id ingresada no coincide con ninguna en la BDD.")
+                    self.cargar_datos(datos)
                     return
-            self.cargar_datos(datos)
+            print("La id ingresada no coincide con ninguna en la BDD.")
+            return
+            
         except ValueError:
             print("La id ingresada debe ser un numero!")
     #metodo para mostar la base de datos
