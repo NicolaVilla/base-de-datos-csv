@@ -35,14 +35,19 @@ class BaseDeDatos():
             writer.writerows(datos)
     #metodo que permite actualizar la base de datos
     def actualizar_usuario(self):
-        id = int(input("Ingrese la id del usuario que desea actualizar: "))
-        datos = self.extraer_datos()
-        for i in range(1,len(datos)):
-            if(int(datos[i][0]) == id):
-                datos[i] = self.ingresar_datos()
-                datos[i][0] = id
-        self.cargar_datos(datos)
-
+        try:
+            id = int(input("Ingrese la id del usuario que desea actualizar: "))
+            datos = self.extraer_datos()
+            for i in range(1,len(datos)):
+                if(int(datos[i][0]) == id):
+                    datos[i] = self.ingresar_datos()
+                    datos[i][0] = id
+                else:
+                    print("La id ingresada no coincide con ninguna en la BDD.")
+                    return
+            self.cargar_datos(datos)
+        except ValueError:
+            print("La id ingresada debe ser un numero!")
     #def borrar_usuario(self):
         
     #def borrar_usuario(self):
