@@ -18,8 +18,7 @@ class BaseDeDatos():
     def crear_usuario(self):   
         datos = self.ingresar_datos()
         with open(self.path,"a") as file:
-            writer = csv.writer(file)
-            file.write("\n")
+            writer = csv.writer(file) 
             writer.writerow(datos)
     
     #Metodo que devuelve una lista con todos los datos de la base
