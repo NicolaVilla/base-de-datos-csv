@@ -53,8 +53,19 @@ class BaseDeDatos():
             reader = csv.reader(file)
             for row in reader:
                 print(row)
-    #def borrar_usuario(self):
 
-
-
-#id, Apellido, Nombre, Edad, Correo
+    def borrar_usuario(self):
+        try:
+            id = int(input("Ingrese la id del usuario que desea eliminar: "))
+            datos = self.extraer_datos()
+            for i in range(1,len(datos)+1):
+                if(int(datos[i][0]) == id):
+                    datos.pop(i)
+                    self.cargar_datos(datos)
+                    self.mostar_usuarios()
+                    return
+            print("La id ingresada no coincide con ninguna en la BDD.")
+            return
+        except ValueError:
+            print("La id ingresada debe ser un numero!")
+            return
