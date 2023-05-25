@@ -21,14 +21,21 @@ class BaseDeDatos():
             writer = csv.writer(file)
             file.write("\n")
             writer.writerow(datos)
-    
+
+    def extraer_datos(self):
+        datos = []
+        with open(self.path,"r") as file:
+            datos = list(csv.reader(file, skipinitialspace=True))
+        return datos
+
     #def actualizar_usuario(self):
+       
 
     #def borrar_usuario(self):
         
     #def borrar_usuario(self):
 
 sapo = BaseDeDatos("prueba")
-sapo.crear_usuario()
+print(sapo.extraer_datos())
 
 #id, Apellido, Nombre, Edad, Correo
